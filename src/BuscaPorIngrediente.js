@@ -10,7 +10,7 @@ export default class App extends Component {
     var imagedata = document.querySelector('input[type="file"]').files[0];
     data.append("uploaded_file", imagedata);
 
-    fetch("http://localhost/vision/visionLabel.php", {
+    fetch("https://projeto-vision.herokuapp.com/visionLabel.php", {
       method: "POST",
       body: data
     }).then(function (res) {
