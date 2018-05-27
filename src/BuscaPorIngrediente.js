@@ -6,40 +6,32 @@ import $ from "jquery";
 export default class App extends Component {
   ;
   uploadAction() {
-    var data = new FormData();
-    var imagedata = document.querySelector('input[type="file"]').files[0];
-    data.append("uploaded_file", imagedata);
+        var dados = new FormData();
+        var imagedata = document.querySelector('input[type="file"]').files[0];
+        dados.append("uploaded_file", imagedata);
 
-    fetch("https://projeto-vision.herokuapp.com/visionLabel.php", {
-      method: "POST",
-      body: data
-    }).then(function (res) {
-      console.log(res.body);
-      items=>this.setState({res});
-      if (res.ok) {
-        alert("Perfect! ");
-      } else if (res.status === 401) {
-       
-        alert("Oops! ");
-      }
-    }, function (e) {
-      alert("Error submitting form!");
-    }).then((response) => response.json()
-    .catch(err => {
-        console.err(`'${err}' happened!`);
-        return {};
-    }))
-    .then((json) => {
-        console.log('parsed json: ', json);
-        this.setState({ data: json })
-    })
-    .catch((err) => { console.log('fetch request failed: ', err) }
-    );
-  }
+        fetch("https://projeto-vision.herokuapp.com/visionLabel.php", {
+            method: "POST",
+            body: dados
+        }).then((results) => results.json())
+            .then(data => {
+                let dat;
+                for(dat in data){
+                    let produtos = data[dat].produto;
+                    this.setState( (state) => {
+                        state.produtos = state.produtos.concat(produtos);
+                        return state;
+                    });
+                }
+
+                console.log("state",this.state.produtos);
+            });
+    }
 
   constructor(props) {
         super(props);
         this.state = {
+		  produtos: [],
           items: [],
           lista: [
             {
@@ -103,9 +95,9 @@ export default class App extends Component {
             </div>
 
           </div>         
-          <ul>
-            {this.state.items.map(item=><li key={item.id}>{item.body}</li>)}
-          </ul>
+          <div>
+			  {this.state.produtos}
+		  </div>
           <div id="lista" className="bloco">
             <p className="titulo">Lista de ingredientes cadastrados</p>
             <form method="post" onSubmit={this.enviaForm}>
