@@ -8,7 +8,8 @@ import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 
 import App from './App';
 import Home from './Home';
-import BuscaPorIngrediente from './BuscaPorIngrediente';
+import Receita from './Receita';
+import Busca from './Busca';
 // import BuscaReceitas from './BuscaReceitas';
 //import registerServiceWorker from './registerServiceWorker';
 
@@ -17,8 +18,9 @@ ReactDOM.render((
         <App>
             <Switch>            
                 <Route exact path="/" component={Home}/>
-                <Route path="/busca-por-ingrediente" component={BuscaPorIngrediente}/>
-                {/*<Route path="/busca-receita" component={BuscaReceitas}/>                */}
+                <Route path="/busca-por-ingrediente" component={Busca}/>
+                <Route path="/receita/ala-minuta" component={Receita}/>
+                {/*<Route path="/busca-receita" component={BuscaReceitas}/>*/}
         </Switch>            
         </App>
     </Router>

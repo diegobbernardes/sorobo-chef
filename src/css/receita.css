@@ -1,0 +1,78 @@
+#receita .img{
+    width: 50%;
+    margin: 0;
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    animation: imgReceita 1s;
+}
+#receita #infos{
+    width: 49%;
+    vertical-align: top;
+    padding: 20px 3% 0;
+    display: inline-block;    
+    opacity: 1;
+    position: relative;
+    animation: receita 1s;
+}
+#receita .titulo{
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+}
+#receita .modo-preparo{
+    overflow-y: scroll;
+    height: 63vh;
+    padding: 0 10px;
+}
+
+#receita .modo-preparo p + p{
+    margin-top: 5px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #aaa; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #888; 
+}
+
+@keyframes imgReceita {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@keyframes receita {
+    0% {top: -15px; opacity:0;}
+    100% {top:0; opacity:1;}
+}
+
+@media (max-width: 640px) {
+    #receita .img{
+        height: 250px;
+        width: 100%;
+    }
+    #receita #infos{
+        width: 100%
+    }
+    #receita .modo-preparo{
+        overflow-y: inherit;
+    }
+}

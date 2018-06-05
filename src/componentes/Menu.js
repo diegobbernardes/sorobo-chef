@@ -13,11 +13,13 @@ export default class Menu extends Component {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <Link className="nav-link" to="/busca-por-ingrediente">Buscar por ingredientes</Link>
+                            <Link className="nav-link" to="/busca-por-ingrediente">Busca por ingredientes</Link>
                         </li>
+                        {/*
                         <li className="nav-item">
                             <Link className="nav-link" to="/busca-receita">Listar receitas</Link>
                         </li>
+                        */}
                 </ul>
                 </div>
             </nav>
